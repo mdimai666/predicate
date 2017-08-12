@@ -1,0 +1,96 @@
+//-------------------------------------------------------------
+//COLORS
+//-------------------------------------------------------------
+@color-accent: rgb(0, 58, 104);
+@color-accent2: rgb(255, 19, 66);
+@color-bg: rgb(233, 233, 233);
+@color-main-text: black;
+@color-bg-dark: @color-accent;
+@color-text: #000;
+@color-text-dark: #fff;
+//-------------------------------------------------------------
+//SCREEN MEDIA
+//-------------------------------------------------------------
+@screen-sm-min: 768px;
+@screen-md-min: 992px;
+@screen-lg-min: 1200px;
+@iphone6: 375px;
+@phone: ~"(max-width: 375px)";
+@tablet: ~"(min-width: 376px) and (max-width: 767px)";
+@mobiles: @phone,
+@tablet;
+@desktop: ~"(min-width: 769px)";
+@retina: ~"only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi)";
+//-------------------------------------------------------------
+//SIZES
+//-------------------------------------------------------------
+@size-navbar-height: 50px;
+@size-navbar-height-mobile: 65px;
+//-------------------------------------------------------------
+//FOR FONT
+//-------------------------------------------------------------
+// @f-h1: 50pt;
+// @fz-lg:55.56px;
+// @fz-lg2:50px;
+// @fz-md:41.67px;
+// @fz-md2:31.92px;
+// @fz-md3:34.72px;
+// @fz-sm: 20.83px;  
+// @fz-sm2: 23.11px;
+// @fz-sm3: 27.78px; 
+// @fz-sm4: 21.11px;
+// h1,h2,h3,h4 { 
+//   font-weight: bold;
+//   // font-family: 'LintelRegular', Arial, sans-serif;
+//   font-family: 'GothamProLight', Arial, sans-serif;
+// }
+// .gotham {
+//   font-family: 'GothamProLight', Arial, sans-serif;
+// }
+b,
+strong {
+  font-weight: 500;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+// .fz-lg {
+//   font-size:@fz-lg;
+// }
+// .fz-lg2 {
+//   font-size:@fz-lg2;
+// }
+// .fz-md {
+//   font-size:@fz-md;
+// }
+// .fz-md2 {
+//   font-size:@fz-md2;
+// }
+// .fz-md3 {
+//   font-size:@fz-md3;
+// }
+// .fz-sm { 
+//   font-size: @fz-sm;
+// }
+// .fz-sm2 { 
+//   font-size: @fz-sm2;
+// }
+// .fz-sm3 { 
+//   font-size: @fz-sm3;
+// }
+// .fz-lh-md {
+//   line-height: 1.1em;
+// }
+//-------------------------------------------------------------
+//FOR GLOBAAL CLASS
+//-------------------------------------------------------------
+@import "includes/base.less";
+@import "includes/navbar.less";
+@import "includes/classes.less";
+@import "includes/mixins.less";
+@import "includes/carousel2.less";
+@import "includes/font.less";
+// @import "includes/form-style-2.less"; 
+@import "includes/all.less";

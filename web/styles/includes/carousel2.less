@@ -1,0 +1,88 @@
+.carousel-2 {
+    .carousel-indicators {
+        li {
+            background: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 0;
+            border: 0;
+            border-bottom: 2px solid white;
+            margin: 3px;
+        }
+    }
+    .carousel-control1 {
+        background: none;
+        &.left,
+        &.right {
+            // position: relative;
+        }
+        &.left {
+            left: -130px;
+        }
+        &.right {
+            right: -130px;
+        }
+    }
+    .carousel-inner {
+        .right-block {
+            // background: red;
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .left-block {
+            // background-color: blue; // width: 100%;
+            // padding: 5px 10px;
+            .carousel-caption {
+                position: static;
+                text-shadow: none;
+                padding: 2px 2px 2px 20px;
+                h4 {
+                    // text-align: right;
+                    margin-bottom: 30px;
+                }
+                .desc {
+                    line-height: 2.3em;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+.carousel-control3 {
+    .xcenter();
+    color: @color-accent;
+    
+    .border {
+        border: 1px solid @color-accent;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        .xcenter();
+    }
+    &.left,
+    &.right {
+        background: none;
+        text-shadow: none;
+        opacity: 1;
+        font-size: 50px;
+        font-weight: 100;
+        &:hover {
+            color: black;
+        }
+        .fa {
+            padding-bottom: 0.08em;
+        }
+    }
+    &.left .fa{
+        padding-right: 0.08em;
+    }
+    &.right .fa{
+        padding-left: 0.08em;
+    }
+}
