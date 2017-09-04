@@ -3,7 +3,7 @@
 <a href="#" class="btn btn-primary" onclick="dima()">dima</a>
 <button class="btn btn-danger" onclick="dima">Danger</button>
 
-<a href="#myModal" data-backdrop="false" data-toggle="modal">Click Me</a>
+<a href="#myModal" data-backdrop="false" data-toggle="modal" class="btn-click1">Click Me</a>
 
 <!-- test -->
 
@@ -41,10 +41,15 @@
 		text-align: center;
 		padding-top: 10px;
 	}
+
+	.iframe_code {
+		width: 100%;
+		min-height:100%;
+	}
 </style>
 
 
-<div id="myModal" class="modal fade xcenter" style="display:none">
+<div id="myModal" class="modal fade xcenter" style="display:none" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -85,9 +90,32 @@
 
 	$(function () {
 		// $("#myModal").css(css_pos_center($("#myModal"))).draggable({
+
+		$('#myModal .modal-body')
+			.css({'padding':'0'})
+			.html('<iframe id="myIframe1" class="iframe_code" src="/monaco.php" frameborder="none"></iframe>');
+
+
+		
+
+		$('#myModal .modal-content').resizable({
+			//alsoResize: ".modal-dialog",
+			//minHeight: 150
+		});
+
 		$("#myModal").draggable({
 			handle: ".modal-header"
 		});
+
+		// $('.modal-dialog').draggable();
+
+		$('#myModal').on('show.bs.modal', function () {
+			$(this).find('.modal-body').css({
+				'max-height':'100%'
+			});
+		});
+
+		$('.btn-click1').trigger('click');
 	});
 
 	function css_wh(){
