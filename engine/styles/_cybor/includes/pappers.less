@@ -1,0 +1,52 @@
+
+.papper {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  // box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+  box-shadow: 0 0 25px 1px rgba(0, 0, 0, 0.2);
+
+  padding-left: 2.5cm;
+  padding-bottom: 2cm;
+  padding-top: 1.5cm;
+  padding-right: 1.6cm;
+}
+.papper[size="A4"] {  
+  width: 21cm;
+  height: 29.7cm; 
+}
+.papper[size="A4"][layout="portrait"] {
+  width: 29.7cm;
+  height: 21cm;  
+}
+.papper[size="A3"] {
+  width: 29.7cm;
+  height: 42cm;
+}
+.papper[size="A3"][layout="portrait"] {
+  width: 42cm;
+  height: 29.7cm;  
+}
+.papper[size="A5"] {
+  width: 14.8cm;
+  height: 21cm;
+}
+.papper[size="A5"][layout="portrait"] {
+  width: 21cm;
+  height: 14.8cm;  
+}
+@media print {
+  body, page {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
+
+@media (max-width :768px) {
+  .papper { padding: 0.5cm; }
+}
+
+@media (min-width :769px) and (max-width: 992px) {
+  .papper { padding: 1cm; }
+}

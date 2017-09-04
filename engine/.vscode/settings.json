@@ -1,0 +1,10 @@
+// Place your settings in this file to overwrite default and user settings.
+{    
+    "less.compile": {
+        "main": "${workspaceRoot}\\styles\\style1.less",
+        "compress": true,
+        "autoprefixer": "> 5%, last 2 Chrome versions, not ie 6-9",
+        "sourceMap": true
+
+    }
+}

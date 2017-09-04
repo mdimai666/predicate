@@ -1,0 +1,93 @@
+//-------------------------------------------------------------
+//CAROUSEL
+//-------------------------------------------------------------
+
+.carousel {
+  margin-left: -5px;
+  margin-right: -3px;
+
+  .carousel-control.left, .carousel-control.right {
+    background-image: none;
+    opacity: 1;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 0 2px 0 0px rgba(0,0,0,0.8)
+    
+  }
+
+  .carousel-control.right  {
+    left: auto;
+    right: 20px;
+  }
+
+  .carousel-inner {
+    border-radius: 3px;
+
+    background-image: url(/img/subtle_dots_2X.png);
+    background-repeat: repeat;
+    // background-color: red;
+  }
+
+  .item {
+    @caorusel-imet-min-height: 200px;
+    min-height: @caorusel-imet-min-height;
+    overflow: hidden;
+
+    .carousel-caption {
+      left: 30px;
+      top: 10px;
+      bottom: auto;
+      right: auto;
+      width: 41%;
+      text-align: left;
+      line-height: 1.5;
+      font-size: 1.3em;
+      color: black;
+      text-shadow: none;
+      background-color:white;
+      padding: 20px;
+
+      font-weight: 500;
+      text-align: center;
+
+      .centered {
+        text-align: left;
+        display: inline-block;
+
+      }
+    }
+
+    .carousel-caption.right {
+      right: 30px;
+      left: auto;
+    }
+    
+    .link {
+      font-size: 1.2em;
+      position: absolute;
+      top: auto;
+      left: auto;
+      right: 20px;
+      bottom: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      background: white;
+      color: @color-accent;
+      border-radius: 3px;
+
+      i {
+        margin-left: 5px;
+        position: relative;
+        top:3px;
+      }
+    }
+
+    img {
+      min-height: @caorusel-imet-min-height;
+      width: 100%;
+
+    }
+  }
+}

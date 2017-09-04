@@ -1,0 +1,164 @@
+//-------------------------------------------------------------
+//CUSTOM CLASS
+//-------------------------------------------------------------
+.vertical-top {
+    vertical-align: top;
+}
+
+.vertical-middle {
+    vertical-align: middle;
+}
+
+.vertical-bottom {
+    vertical-align: bottom;
+}
+
+.hide-scroll {
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  &::-webkit-scrollbar { width: 0; } 
+}
+
+.scroll-x:extend(.hide-scroll) {
+  overflow-x: auto;
+
+}
+
+.scroll-y:extend(.hide-scroll) {
+  overflow-y: auto;
+}
+
+.full {
+  margin: 0 -15px;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.dark {
+  color: white;
+  a{
+    color: white;
+  }
+}
+
+.spacer {
+  display: block;
+  height: 100px;
+  width:100%;
+}
+
+.spacer25:extend(.spacer) { height: 25px;}
+.spacer50:extend(.spacer) { height: 50px;}
+.spacer75:extend(.spacer) { height: 75px;}
+.spacer100:extend(.spacer) { height: 100px;}
+.spacer150:extend(.spacer) { height: 150px;}
+.spacer200:extend(.spacer) { height: 200px;}
+
+.display-inline-block { 
+  display: inline-block; 
+}
+
+.xcenter {
+  .xcenter();
+}
+
+.xcenter-stretch {
+  .xcenter-stretch();
+}
+
+.xcenter-row { 
+  .xcenter-row();
+}
+
+.xcenter-row-stretch {
+  .xcenter-row-stretch();
+}
+
+.xcenter-disable-sm {
+  @media (max-width:@screen-sm-min) {
+    display: block !important;
+  }
+}
+
+.xcenter-disable-md {
+  @media (max-width:@screen-md-min) {
+    display: block !important;
+  }
+  
+}
+
+.xcenter-disable-lg {
+  @media (max-width:@screen-lg-min) {
+    display: block !important;
+  }
+  
+}
+//text align
+.text-center-sm {
+  @media (max-width:@screen-sm-min) {
+    text-align: center !important;
+    
+  }
+}
+
+.text-center-md {
+  @media (max-width:@screen-md-min) {
+    text-align: center !important;
+  }
+  
+}
+
+.text-center-lg {
+  @media (max-width:@screen-lg-min) {
+    text-align: center !important;
+  }
+  
+}
+
+
+.text-left-sm {
+  @media (max-width:@screen-sm-min) {
+    text-align: left !important;
+    
+  }
+}
+
+.text-left-md {
+  @media (max-width:@screen-md-min) {
+    text-align: left !important;
+  }
+  
+}
+
+.text-left-lg {
+  @media (max-width:@screen-lg-min) {
+    text-align: left !important;
+  }
+  
+}
+
+
+.text-right-sm {
+  @media (max-width:@screen-sm-min) {
+    text-align: right !important;
+    
+  }
+}
+
+.text-right-md {
+  @media (max-width:@screen-md-min) {
+    text-align: right !important;
+  }
+  
+}
+
+.text-right-lg {
+  @media (max-width:@screen-lg-min) {
+    text-align: right !important;
+  }
+  
+}
+
+//text align end

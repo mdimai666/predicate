@@ -1,0 +1,186 @@
+//-------------------------------------------------------------
+//NEWS PAGE
+//-------------------------------------------------------------
+
+.page-header {
+  padding-left: 8px;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 18pt;
+}
+
+.d-news-post-block {
+    border-radius: 2px;
+
+    .caption {
+        color: black;
+        // position: absolute;
+        // top: auto;
+        // bottom:0;
+        // left:0;
+        // right: 0;
+        width: 100%;
+        overflow: hidden !important;
+        padding-bottom: 0;
+        // text-shadow: 1px 1px 2px black, 0 0 1em black;
+        h1:extend(.d-block-news h1) {
+          margin: 0;
+          padding: 0;
+
+          a{
+            color: black;
+          }
+        }
+    }
+
+  .thumbnail {
+    background-color: white;
+    height: 300px;
+    position: relative;
+    // background: none;
+    // background-position: bottom;
+    // background-repeat: repeat-x;
+    overflow: hidden;
+
+    img[none]{
+      display: none;
+    }
+
+    .emptyimage {       
+      display: block;
+      // width: 100%;
+      color: black;
+      padding: 10px;
+      overflow: hidden;
+      // background:red;
+      line-height: 1.4em;
+      max-height: 1.4em *  11;
+    }
+
+    .t_content {
+      overflow: hidden;
+      height: 256px;
+      display: block;
+    }
+
+
+    .imgcontainer {
+       height: 206px;
+      width: auto;
+      // position: relative;
+    background: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-size: contain;
+    // overflow: hidden !important;
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+
+    
+    }
+
+    img,.emptyimage {
+      height: 216px;
+      width: auto;
+    }
+  }
+
+  
+
+  .btn {
+    color: white;
+  }
+
+  .link-div {
+    margin-top: 4px;
+    padding-right: 14px;
+    text-align: center;
+    position: absolute;
+    border-radius: 0 0 3px 3px;
+    padding: 10px;
+    top: auto;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    // background-color: #f0f0f0;
+
+    &:hover {
+      // background: none;
+    }
+    .link {
+      // text-decoration: underline;
+
+    }
+  }
+
+
+}
+
+.d-news-post-single {
+
+    background-position: top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    // background-image: url(/img/perth-city-bg.jpg);
+
+  .carousel {
+    box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.4);
+    margin-bottom: 30px;
+
+    .item {
+      .carousel-caption {
+        padding: 10%;
+        width: 100%;
+        text-align: center;
+        left:0;
+      }
+      .carousel-caption span.cap{
+        display: inline-block;
+        text-align: center;
+        font-size: 1.7em;
+        margin: auto auto;
+        background-color: @color-accent;
+        box-shadow: @size-block-news-shadowWidth @size-block-news-shadowWidth 0px rgba(100,100,100,0.8);
+
+      }
+    }
+
+    .carousel-control.left, .carousel-control.right {
+      display: none;
+    }
+  }
+
+  #main_title {
+    min-height: 200px;
+    display: block;
+    width: 100%;
+    text-align: center;
+        
+    h1 {
+        display: inline-block;
+        color:white;
+        margin: auto auto;
+        background-color: @color-accent;
+        margin: 50px 20px 20px 20px;
+        padding:20px;
+        border-radius: 3px;
+        // box-shadow: @size-block-news-shadowWidth @size-block-news-shadowWidth 0px rgba(100,100,100,0.8);
+    }
+
+  }    
+
+  img {
+    box-shadow: 0 0 5px 3px rgba(0,0,0,0.2);
+    max-width: 100%;
+    height: auto;
+  }
+
+  .post_content {
+    font-size: 1.2em;
+    padding-bottom: 100px;
+  }
+
+}

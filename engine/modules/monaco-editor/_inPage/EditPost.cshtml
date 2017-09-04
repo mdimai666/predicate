@@ -1,0 +1,184 @@
+﻿@using Core1.MEnums;
+
+@{
+    Layout = "~/Admin/_LayoutAdmin.cshtml";
+    Page.Title = "Редактирование блога";
+
+    string show = Request.Params["show"]??"";
+    show = show.ToLower();
+
+    string new_editor_url = (show == "code") ?
+        ("/Admin/Post/CodeEditor?g_type=" + EPost_Type.StaticPage.ToString() )
+        : ("/Admin/Post/Editor?g_type=" + EPost_Type.Post.ToString());
+
+    string controller = ((show == "code") ? "All" : (show == "page" ? "StaticPage" : ""));
+}
+
+@section ScriptsHead {
+
+    <script src="~/Admin/Post/EditPost.js"></script>
+}
+
+<h1>@Page.Title</h1>
+
+
+@MH.GHtml.asearch("Поиск")
+
+<a class="btn btn-default" href="@new_editor_url">Создать новый</a>
+
+<div id="TableContainer"  class="jtable-white"></div>
+
+<script type="text/javascript">
+
+    @{ 
+        <text>
+    var show = '@show';
+    var controller = '@controller';
+        </text>
+
+    }
+
+    $(document).ready(function () {
+        $('#TableContainer').jtable({
+            title: ' Посты',
+            paging: true,
+            pageSize: 50,
+            sorting: true,
+            multiSorting: true,
+            defaultSorting: 'Name ASC',
+            actions: {
+                //listAction: '/api/Lists/List',
+                listAction: function (postData, jtParams) {
+                    return $.Deferred(function ($dfd) {
+                        $.ajax({
+                            url: '/api/Posts/List' + controller + '?jtSearch=' + $('#asearch').val() + '&jtStartIndex=' + jtParams.jtStartIndex + '&jtPageSize=' + jtParams.jtPageSize + '&jtSorting=' + jtParams.jtSorting,
+                            type: 'GET',
+                            dataType: 'json',
+                            data: postData,
+                            success: function (data) {
+                                $dfd.resolve(data);
+                            },
+                            error: function () {
+                                $dfd.reject();
+                            }
+                        });
+                    });
+                },
+                //deleteAction: '/api/Posts/Delete',
+                //createAction: '/api/Posts/Create',
+                //updateAction: '/api/Posts/Update',
+            },
+
+            fields: {
+                PostId: {
+                    title: '№',
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false,
+                    width: '5%'
+                },
+                Title: {
+                    title: 'Заголовок',
+                    list: true,
+                    display: function (d) {
+                        var id = d.record.PostId;
+                        var h = js_admin_post_editor_edit_path(id, show);
+                        a = '<a href="{0}" class=""  title="{1}">{2}</a>'.format(h,id,d.record.Title);
+                        return a;
+                    }
+                },
+                UniqueName: {
+                    title: 'UN',
+                    list: true,
+                    display: function (d) {
+                        var id = d.record.PostId;
+                        var un = d.record.UniqueName;
+                        if (!un)
+                            return '<a href="/Pages/?id={0}" target="_blank">#{0}</a>'.format(id);
+                        else 
+                            return '<a href="/Pages/?p={0}" target="_blank">{0}</a>'.format(un);
+                    }
+                },
+                Description: {
+                    title: 'Описание',
+                    list: true
+                },
+                AuthorId: {
+                    title: 'Автор',
+                    list: true,
+                    defaultValue: 0,
+                    width:'1%',
+                },
+                PostType: {
+                    title: 'Тип',
+                    list: true,
+                    defaultValue: 0,
+                    values: core.enum('EPost_Type'),
+                    type: 'checkbox',
+                    width:'1%',
+                },
+                DT_Insert: {
+                    title: 'Дата',
+                    list: true,
+                    //type: 'date',
+                    //displayFormat: 'dd-mm-yy',
+                    display: function (d) { return DT_str(d,'DT_Insert'); },
+                    create: false,
+                    edit: false,
+                    width:'1%',
+                },
+                Enable: {
+                    title: 'Enable',
+                    type: 'checkbox',
+                    //values: { 'false': 'Выключен', 'true': 'Включен' },
+                    values: core.enum('enable'),
+                    defaultValue: 'true',
+                    list: false,
+                    width:'1%',
+                },
+                json: {
+                    title: 'Json',
+                    type: 'textarea',
+                    list: false,
+                    defaultValue: '{}',
+                },
+                //Setting: {
+                //    title: 'Настройки',
+                //    width: '1%',
+                //    sorting: false,
+                //    create: false,
+                //    edit: false,
+                //    display: function (d) {
+                //        var id = d.record.PostId;
+                //        var c = "jtable-command-button jtable-delete-command-button";
+                //        var c2 = "jtable-command-button jtable-edit-command-button";
+                //        var a = '<a class="' + c + '" onclick="js_admin_post_editor_delete(' + id +')" title="'+id+'"><span>Удалить</span>____</a>';
+                //        a += '<a class="' + c2 + '" onclick="js_admin_post_editor_edit(' + id + ',\'' + show+'\')" title="' + id +'"><span>Изменить</span>____</a>';
+                //        return a;
+                //    }
+                //}
+                Tool: core.widget.jtable.tool(core.widget.jtable.tools['editpost']),
+
+            },
+        });
+        //Load user list from server
+        //$('#UserTableContainer').jtable('load');
+
+        //Re-load records when user click 'load records' button.
+        $('#LoadRecordsButton').click(function (e) {
+            e.preventDefault();
+            //$('#TableContainer').jtable('load');
+            $('#TableContainer').jtable('load', {
+                //jtSearch: $('#asearch').val()
+            });
+        });
+
+        $('span.jtable-toolbar-item.jtable-toolbar-item-add-record')
+            .addClass('ui-button ui-corner-all ui-widget');
+
+        //Load all records when page is first shown
+        $('#LoadRecordsButton').click();
+    });
+</script>
+
