@@ -129,96 +129,96 @@ h1 {
 ////////////////////////////////////////////
 //PAGES
 ////////////////////////////////////////////
-.page {
-    min-height: 100vh;
-    min-width: 100vw;
-    background-repeat: none;
-    background-position: center;
-    background-size: contain;
-    display: none;
-    &.active {
-        display: block;
-    }
-}
+// .page {
+//     min-height: 100vh;
+//     min-width: 100vw;
+//     background-repeat: none;
+//     background-position: center;
+//     background-size: contain;
+//     display: none;
+//     &.active {
+//         display: block;
+//     }
+// }
 
-.content {
-    min-height: ~"calc(100vh " - @size-navbar-height ~")";
-    min-width: 100vw;
-    @media @mobiles {
-        margin-top: @size-navbar-height-mobile;
-    }
-    @media @desktop {
-        // .xcenter();
-        margin-top: @size-navbar-height;
-    }
-}
+// .content {
+//     min-height: ~"calc(100vh " - @size-navbar-height ~")";
+//     min-width: 100vw;
+//     @media @mobiles {
+//         margin-top: @size-navbar-height-mobile;
+//     }
+//     @media @desktop {
+//         // .xcenter();
+//         margin-top: @size-navbar-height;
+//     }
+// }
 
 ///////////////////////////////////////////////////////
 // PAGE1
-.page1 {
-    .offer {
-        text-align: center;
-        @media @phone,
-        @tablet {
-            .xcenter();
-        }
-        @media @desktop {
-            .xcenter-row();
-            .img1 {
-                margin: 90px;
-            }
-        }
-        .img1 {
-            width: 300px;
-            height: 300px;
-            display: inline-block;
-            background-color: white;
-            border-radius: 50%;
-            .xcenter();
-        }
-    }
-}
+// .page1 {
+//     .offer {
+//         text-align: center;
+//         @media @phone,
+//         @tablet {
+//             .xcenter();
+//         }
+//         @media @desktop {
+//             .xcenter-row();
+//             .img1 {
+//                 margin: 90px;
+//             }
+//         }
+//         .img1 {
+//             width: 300px;
+//             height: 300px;
+//             display: inline-block;
+//             background-color: white;
+//             border-radius: 50%;
+//             .xcenter();
+//         }
+//     }
+// }
 
-.page2 {
-    @media @desktop {
-        .form-group {
-            .group-1 {
-                margin: 20px 0px;
-                margin-right: 40px;
-            }
-            .group-1:last-child {
-                margin-right: 0px;
-            }
-            .caption {
-                font-size: 1.2em;
-            }
-            .number {
-                font-size: 2em;
-            }
-        }
-    }
-    @media @mobiles {
-        .form-group {
-            text-align: center;
-            .group-1 {
-                margin: 10px 0px;
-                margin-right: 40px;
-            }
-            .group-1:last-child {
-                margin-right: 0px;
-            }
-            .caption {
-                // font-size: 1.2em;
-            }
-            .number {
-                // font-size: 2em;
-            }
-        }
-        .button-group {
-            text-align: center;
-        }
-    }
-}
+// .page2 {
+//     @media @desktop {
+//         .form-group {
+//             .group-1 {
+//                 margin: 20px 0px;
+//                 margin-right: 40px;
+//             }
+//             .group-1:last-child {
+//                 margin-right: 0px;
+//             }
+//             .caption {
+//                 font-size: 1.2em;
+//             }
+//             .number {
+//                 font-size: 2em;
+//             }
+//         }
+//     }
+//     @media @mobiles {
+//         .form-group {
+//             text-align: center;
+//             .group-1 {
+//                 margin: 10px 0px;
+//                 margin-right: 40px;
+//             }
+//             .group-1:last-child {
+//                 margin-right: 0px;
+//             }
+//             .caption {
+//                 // font-size: 1.2em;
+//             }
+//             .number {
+//                 // font-size: 2em;
+//             }
+//         }
+//         .button-group {
+//             text-align: center;
+//         }
+//     }
+// }
 
 .loader {
     opacity: 0.01;

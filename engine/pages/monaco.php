@@ -1,5 +1,17 @@
 <?php global $core; ?>
 
+<?php
+
+	class Monaco {
+		public function __construct()
+		{
+
+		}
+
+		public function out(){
+	?>
+
+
     <script src="/modules/monaco-editor/plugins/emmet/vendor/emmet-snippets.js"></script>
     <script src="/modules/monaco-editor/plugins/emmet/dist/emmet-monaco.js"></script>
     <script src="/modules/monaco-editor/min/vs/loader.js"></script>
@@ -11,9 +23,10 @@
 	var codeLang = "html,javascript,json,css,less,razor,csharp,typescript,xml,plaintext";
 </script>
 
-<div id="code_container" style="width:100%;min-height:100vh;border:1px solid grey"></div>
+<!-- <div id="code_container" style="width:100%;min-height:100vh;border:1px solid grey"></div> -->
+<div id="code_container" style="width:100%;min-height:400px;"></div>
 <textarea id="buffer" class="hidden">function dima() {}</textarea>
-<textarea id="json-data" class="form-control">@(post?.json??"{}")</textarea>
+<textarea id="json-data" class="form-control hidden">@(post?.json??"{}")</textarea>
 
 <!-- 
 
@@ -143,3 +156,11 @@
 
 
  -->
+<?php
+		}
+	}
+
+	$monaco = new Monaco();
+
+	$monaco->out();
+?>

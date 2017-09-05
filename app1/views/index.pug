@@ -1,5 +1,29 @@
 extends layout
 
+
+
 block content
-  h1= title
-  p Welcome to #{title}
+  div.container
+    h1= title
+    p Welcome to #{title}
+    hr
+    p dima
+      .row
+        .col-xs-6 aef
+        .col-xs-6 dima
+          + list
+
+
+
+    hr
+
+    img(src="public/img.jpg", alt="")
+
+    .alert.alert-info error
+
+
+//- mixins
+mixin list
+  ul 
+    each v in ['one', 'two', 'three']
+      li=v

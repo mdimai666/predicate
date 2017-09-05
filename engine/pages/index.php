@@ -7,47 +7,6 @@
 
 <!-- test -->
 
-<style>
-	.modal {
-		overflow: hidden;
-	}
-
-	.modal-dialog {
-		margin-right: 0;
-		margin-left: 0;
-	}
-
-	.modal-header {
-		height: 30px;
-		background-color: #444;
-		color: #ddd;
-	}
-
-	.modal-title {
-		margin-top: -10px;
-		font-size: 16px;
-	}
-
-	.modal-header .close {
-		margin-top: -10px;
-		color: #fff;
-	}
-
-	.modal-body {
-		color: #888;
-	}
-
-	.modal-body p {
-		text-align: center;
-		padding-top: 10px;
-	}
-
-	.iframe_code {
-		width: 100%;
-		min-height:100%;
-	}
-</style>
-
 
 <div id="myModal" class="modal fade xcenter" style="display:none" tabindex="-1" role="dialog">
 	<div class="modal-dialog">
@@ -89,30 +48,18 @@
 	})
 
 	$(function () {
-		// $("#myModal").css(css_pos_center($("#myModal"))).draggable({
 
-		$('#myModal .modal-body')
-			.css({'padding':'0'})
-			.html('<iframe id="myIframe1" class="iframe_code" src="/monaco.php" frameborder="none"></iframe>');
-
-
-		
+		// $('#myModal .modal-body')
+		// 	.css({'padding':'0'})
+			// .html('<iframe id="myIframe1" class="iframe_code" src="/monaco?ajax=true" frameborder="none"></iframe>');
 
 		$('#myModal .modal-content').resizable({
-			//alsoResize: ".modal-dialog",
-			//minHeight: 150
+			alsoResize: ".modal-dialog",
+			minHeight: 150
 		});
 
 		$("#myModal").draggable({
 			handle: ".modal-header"
-		});
-
-		// $('.modal-dialog').draggable();
-
-		$('#myModal').on('show.bs.modal', function () {
-			$(this).find('.modal-body').css({
-				'max-height':'100%'
-			});
 		});
 
 		$('.btn-click1').trigger('click');
