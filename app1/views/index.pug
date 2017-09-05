@@ -1,7 +1,5 @@
 extends layout
 
-
-
 block content
   div.container
     h1= title
@@ -11,19 +9,5 @@ block content
       .row
         .col-xs-6 aef
         .col-xs-6 dima
-          + list
-
-
-
-    hr
-
-    img(src="public/img.jpg", alt="")
-
-    .alert.alert-info error
-
-
-//- mixins
-mixin list
-  ul 
-    each v in ['one', 'two', 'three']
-      li=v
+          script.
+            console.log(data)

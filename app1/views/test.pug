@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  div.container
+    h1= title
+    p Welcome to #{title}
+    hr
+    p dima
+      .row
+        .col-xs-6 aef
+        .col-xs-6 dima
+          + list
+
+
+
+    hr
+
+    img(src="/img.jpg", alt="")
+
+    .alert.alert-info dima
+    script.
+      console.log(data);
+
+
+//- mixins
+mixin list
+  ul 
+    each v in ['one', 'two', 'three']
+      li=v

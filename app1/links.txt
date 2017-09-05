@@ -1,0 +1,12 @@
+input with tagged / keywords input js
+    http://loopj.com/jquery-tokeninput/
+    http://documentcloud.github.io/visualsearch/#demo
+    http://textextjs.com/manual/examples/tags-adding.html
+    https://stackoverflow.com/questions/19429012/create-input-form-to-add-remove-keywords
+
+
+http://fritzing.org/projects/
+
+
+mysql w3school
+    https://www.w3schools.com/nodejs/nodejs_mysql_select.asp

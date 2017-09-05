@@ -1,3 +1,12 @@
+var ef = require('../linq');
+//https://github.com/mihaifm/linq/blob/master/sample/tutorial.js
+//g node.js entity framework
+
+
+
+
+
+
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
