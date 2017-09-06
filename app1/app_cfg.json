@@ -1,0 +1,8 @@
+{
+  "cfg_db": {
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "predicate"
+  }
+}

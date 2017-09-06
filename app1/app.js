@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stringify = require('json-stringify-safe');
 
+var cfg_db = require('./app_cfg.json').cfg_db;
+
 
 //
 var db = require('./db');
@@ -35,52 +37,96 @@ app.use(express.static('public'));
 // app.use('/', index);
 // app.use('/users', users);
 
+var mysql = require('mysql');
 
 app.use(function (req, res) {
 
+  //get data
+  function step1(next, buf){
+    var conn = mysql.createConnection(cfg_db);
+    
+      conn.connect();
+    
+      conn.query('select * from users', function(error, results){
+        if ( error ){
+            res.status(400).send('Error in database operation');
+        } else {
+            // res.send(results);
+            var db1 = results;
+            var data1 = {u: db1};
+            var data2 = stringify(db1, null, 2)
+            // res.render('index', { title: req.path, data1: data1, data2: data2 });
 
-  // var db1 = db.users(callback);
+            buf.data1 = data1;
+            buf.data2 = data2;
+
+            return next(step3, buf);
+        }
+      });
+
+    // return next();
+  };
+
+  //do operations
+  function step2(next,buf){
+    //so something
+    return next(null, buf);
+  };
+
+  function step3(next, buf){
+    // res.send('Yummi!');
+    res.render('index', { title: buf.req.path, data1: buf.data1, data2: buf.data2 });
+  };
+
+  var buf = {
+    req: req,
+    res: res,
+  }
+
+  step1(step2, buf);
+
+  // // var db1 = db.users(callback);
 
 
-  // function callback(db1){
-  //   var data1 = {u: db1};
-  //   var data2 = stringify(db1, null, 2)
-  //   res.render('index', { title: req.path, data1: data1, data2: data2 });
+  // // function callback(db1){
+  // //   var data1 = {u: db1};
+  // //   var data2 = stringify(db1, null, 2)
+  // //   res.render('index', { title: req.path, data1: data1, data2: data2 });
+  // // }
+
+  // function step1(req, res, next){
+    
+  //   // db.connect();
+  //   // db.users(function (err, result, next2, res, req) {
+  //   //   var db1 = result;
+  //   //   var data1 = {
+  //   //     u: db1
+  //   //   };
+  //   //   var data2 = stringify(db1, null, 2)
+  //   //   // res.render('index', {
+  //   //   //   title: req.path,
+  //   //   //   data1: data1,
+  //   //   //   data2: data2
+  //   //   // });
+
+  //   //   // res.send('ff');
+  //   //   console.log('d1');
+  //   //   res.send('send');
+
+  //   //   // step2();
+  //   //   // next2(err, res, );
+  //   // }, res, req);
+
+  //   // res.send('yes');
   // }
 
-  function step1(req, res, next){
-    
-    db.connect();
-    db.users(function (err, result, next2, res, req) {
-      var db1 = result;
-      var data1 = {
-        u: db1
-      };
-      var data2 = stringify(db1, null, 2)
-      // res.render('index', {
-      //   title: req.path,
-      //   data1: data1,
-      //   data2: data2
-      // });
+  // function step2(res, next){
+  //   res.send('hello');
+  // }
 
-      // res.send('ff');
-      console.log('d1');
-      res.send('send');
-
-      // step2();
-      // next2(err, res, );
-    }, res, req);
-
-    // res.send('yes');
-  }
-
-  function step2(res, next){
-    res.send('hello');
-  }
-
-  // setTimeout(function() {
-    step1(req, res, step2)
-  // }, 2000);
+  // // setTimeout(function() {
+  //   step1(req, res, step2)
+  // // }, 2000);
 
 
 });
