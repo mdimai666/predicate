@@ -10,3 +10,6 @@ http://fritzing.org/projects/
 
 mysql w3school
     https://www.w3schools.com/nodejs/nodejs_mysql_select.asp
+
+circular json problem
+    https://github.com/isaacs/json-stringify-safe

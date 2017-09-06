@@ -12,33 +12,48 @@ var con = mysql.createConnection({
 });
 
 // var connect = function(){
-  con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-  });
+con.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 // }
 
-var users = function(){
-  
-  
-    var sql = "SELECT * FROM users";
+// var query = function(sql, cb){
+//   con.query(sql, function(err, result) {
+//     if (err) throw(err); 
+//     cb(err, result);
+//   });
+// };
 
-    var res;
-  
-    res = con.query(sql, function (err, result) {
-      if (err) throw err;
-      // console.log("Result: " + result);
-      // console.log(JSON.stringify(result[0]))
-      // res = result;
-    });
-    // return res;
-    return res;
+var users = function (callback,res, req) {
+
+
+  var sql = "SELECT * FROM users";
+
+  var e = con.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    
+    // console.log(result);
+    var ress = {'dima': 'makarov'};
+    callback(err, ress, {}, res, req);
+  });
+
+
+  // res = query(sql, function(err,result){
+  //   return result;
+  //   // console.info(result);
+  // })
+
+  // return res;
+  // res = JSON.stringify(res);
+  // console.log(res);
+  // return res;
 }
 
 /////////////////////////////////////////
 // EXPORT
 
 module.exports = {
-  connect: function(){},
+  connect: function () {},
   users: users,
 }

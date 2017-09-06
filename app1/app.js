@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var stringify = require('json-stringify-safe');
+
 
 //
 var db = require('./db');
@@ -21,7 +23,9 @@ app.set('view engine', 'pug');
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -32,25 +36,64 @@ app.use(express.static('public'));
 // app.use('/users', users);
 
 
-app.use(function(req,res){
-  db.connect();
+app.use(function (req, res) {
 
-  var db1 = db.users();
 
-  var data1 = {u: db1};
+  // var db1 = db.users(callback);
 
-  res.render('index', { title: req.path, data1: data1 });
+
+  // function callback(db1){
+  //   var data1 = {u: db1};
+  //   var data2 = stringify(db1, null, 2)
+  //   res.render('index', { title: req.path, data1: data1, data2: data2 });
+  // }
+
+  function step1(req, res, next){
+    
+    db.connect();
+    db.users(function (err, result, next2, res, req) {
+      var db1 = result;
+      var data1 = {
+        u: db1
+      };
+      var data2 = stringify(db1, null, 2)
+      // res.render('index', {
+      //   title: req.path,
+      //   data1: data1,
+      //   data2: data2
+      // });
+
+      // res.send('ff');
+      console.log('d1');
+      res.send('send');
+
+      // step2();
+      // next2(err, res, );
+    }, res, req);
+
+    // res.send('yes');
+  }
+
+  function step2(res, next){
+    res.send('hello');
+  }
+
+  // setTimeout(function() {
+    step1(req, res, step2)
+  // }, 2000);
+
+
 });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

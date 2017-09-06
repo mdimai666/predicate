@@ -7,7 +7,8 @@ html
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    -var data = JSON.stringify(data1);
+    -var data = data2;//JSON.stringify(data1);
+    -if(typeof data === 'undefined') data='{}';
     script.
       var data = !{data}
       
