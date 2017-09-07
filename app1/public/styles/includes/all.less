@@ -1,0 +1,221 @@
+////////////////////////////////////////////
+//components
+////////////////////////////////////////////
+h1 {
+    &.m {
+        // text-align: center;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+    &.colored {
+        color: @color-accent2;
+         :first-child {
+            color: @color-accent;
+        }
+    }
+}
+
+.slider {
+    margin-top: 3em;
+    &.slider-horizontal {
+        width: 100% !important;
+    }
+    .slider-track-low {}
+    .slider-selection {
+        background: @color-accent;
+        margin: 3px 0px;
+        height: 4px !important;
+    }
+    .slider-track-high {
+        background: @color-accent;
+        margin: 4px 0px;
+        height: 2px !important;
+    }
+    .slider-handle {
+        background: @color-accent2;
+    }
+    .tooltip {
+        opacity: 1;
+        .tooltip-arrow {
+            border-top-color: @color-accent;
+        }
+        .tooltip-inner {
+            background: @color-accent;
+        }
+    }
+}
+
+.gradient-red() {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ee4173+0,d30a21+100 */
+    background: rgb(238, 65, 115);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(238, 65, 115, 1) 0%, rgba(211, 10, 33, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(238, 65, 115, 1) 0%, rgba(211, 10, 33, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(238, 65, 115, 1) 0%, rgba(211, 10, 33, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee4173', endColorstr='#d30a21', GradientType=0);
+    /* IE6-9 */
+}
+
+.gradient-red {
+    .gradient-red();
+}
+
+.btn.btn-primary,
+.btn.btn-default {
+    border: 0;
+    padding: 9px 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.btn.btn-primary {
+    .gradient-red();
+}
+
+.btn.btn-default {
+    background: #033d67;
+}
+
+.btn-bigfont1 {
+    font-size: 1.5em;
+    padding: 7px 30px !important;
+}
+
+.input-d2 {
+    padding: 30px;
+    border: 0; // font-size: 1.2rem;
+}
+
+.fx(10);
+.fx(@n, @i: 1) when (@i =< @n) {
+    .fx-@{i} {
+        //width: (@i * 100% / @n);
+        font-size: (@i * 100%);
+    }
+    .fx(@n, (@i + 1));
+}
+
+// .fx-s(10);
+// .fx-s(@n, @i: 1) when (@i =< @n) {
+//   .fx-@{i} {
+//     //width: (@i * 100% / @n);
+//     font-size: (@i * 100%) ;
+//   }
+//   .fx-s(@n, (@i + 1));
+// }
+@P :~"-";
+@maxi: 5;
+.i-loop (@i) when (@i > 0) {
+    @maxj: 10;
+    .j-loop (@j) when (@j > 0) {
+        .fx-@{i}@{P}@{j} {
+            //   width: (100% / @i);
+            //   height: (100% / @j);
+            font-size: (100% * @i) + (10% * @j);
+        }
+        .j-loop(@j - 1);
+    }
+    .j-loop (0) {}
+    .j-loop(@maxj);
+    .i-loop(@i - 1);
+}
+
+.i-loop (0) {}
+
+.i-loop(@maxi);
+////////////////////////////////////////////
+//PAGES
+////////////////////////////////////////////
+.page {
+    min-height: 100vh;
+    min-width: 100vw;
+    background-repeat: none;
+    background-position: center;
+    background-size: contain;
+    display: none;
+    &.active {
+        display: block;
+    }
+}
+
+.content {
+    min-height: ~"calc(100vh " - @size-navbar-height ~")";
+    min-width: 100vw;
+    @media @mobiles {
+        margin-top: @size-navbar-height-mobile;
+    }
+    @media @desktop {
+        // .xcenter();
+        margin-top: @size-navbar-height;
+    }
+}
+
+///////////////////////////////////////////////////////
+// PAGE1
+.page1 {
+    .offer {
+        text-align: center;
+        @media @phone,
+        @tablet {
+            .xcenter();
+        }
+        @media @desktop {
+            .xcenter-row();
+            .img1 {
+                margin: 90px;
+            }
+        }
+        .img1 {
+            width: 300px;
+            height: 300px;
+            display: inline-block;
+            background-color: white;
+            border-radius: 50%;
+            .xcenter();
+        }
+    }
+}
+
+.page2 {
+    @media @desktop {
+        .form-group {
+            .group-1 {
+                margin: 20px 0px;
+                margin-right: 40px;
+            }
+            .group-1:last-child {
+                margin-right: 0px;
+            }
+            .caption {
+                font-size: 1.2em;
+            }
+            .number {
+                font-size: 2em;
+            }
+        }
+    }
+    @media @mobiles {
+        .form-group {
+            text-align: center;
+            .group-1 {
+                margin: 10px 0px;
+                margin-right: 40px;
+            }
+            .group-1:last-child {
+                margin-right: 0px;
+            }
+            .caption {
+                // font-size: 1.2em;
+            }
+            .number {
+                // font-size: 2em;
+            }
+        }
+        .button-group {
+            text-align: center;
+        }
+    }
+}

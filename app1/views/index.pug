@@ -1,13 +1,13 @@
-extends layout
+extends layout-index1
 
 block content
-  div.container
-    h1= title
-    p Welcome to #{title}
-    hr
-    p dima
-      .row
-        .col-xs-6 aef
-        .col-xs-6 dima
-          script.
-            console.log(data)
+  //- div.container-fluid
+
+  include ../public/pages/index.html
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.7.18/go.js"></script>  
+  script.
+    console.log(data)
+
+  

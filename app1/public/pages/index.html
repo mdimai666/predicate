@@ -1,0 +1,41 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.7.18/go.js"></script>
+
+<!--NAVBAR  -->
+<nav class="navbar navbar-theme  navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar top-bar"></span>
+					<span class="icon-bar middle-bar"></span>
+					<span class="icon-bar bottom-bar"></span>
+				</button>
+			<a class="navbar-brand" href="/">
+					<img src="/img/logo.png" alt="">
+				</a>
+		</div>
+		<div class="collapse navbar-collapse styled1" id="myNavbar">
+			<div class="bg1"></div>
+			<ul class="nav navbar-nav navbar-center">
+				<li class="active"><a href="#visual"><span class="">Visual</span> </a></li>
+				<li><a href="#doc"><span class="">Doc</span></a></li>
+				<li><a href="#about">About</a></li>
+			</ul>
+
+		</div>
+	</div>
+</nav>
+<!--//NAVBAR  -->
+
+<div class="container-fluid">
+	
+	<div class="btn btn-primary err1">Toast</div>
+	
+</div>
+
+<script>
+	$(function(){
+		$('.btn.err1').click(function(){
+			toastr['error']('This is work!', 'error');
+		});
+	});
+</script>

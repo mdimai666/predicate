@@ -75,7 +75,7 @@ app.use(function (req, res) {
 
   function step3(next, buf){
     // res.send('Yummi!');
-    res.render('index', { title: buf.req.path, data1: buf.data1, data2: buf.data2 });
+    res.render('index', { title: 'Predicate', data1: buf.data1, data2: buf.data2 });
   };
 
   var buf = {
