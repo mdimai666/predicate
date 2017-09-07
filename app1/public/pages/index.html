@@ -1,41 +1,91 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.7.18/go.js"></script>
 
-<!--NAVBAR  -->
-<nav class="navbar navbar-theme  navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar top-bar"></span>
-					<span class="icon-bar middle-bar"></span>
-					<span class="icon-bar bottom-bar"></span>
-				</button>
-			<a class="navbar-brand" href="/">
-					<img src="/img/logo.png" alt="">
-				</a>
-		</div>
-		<div class="collapse navbar-collapse styled1" id="myNavbar">
-			<div class="bg1"></div>
-			<ul class="nav navbar-nav navbar-center">
-				<li class="active"><a href="#visual"><span class="">Visual</span> </a></li>
-				<li><a href="#doc"><span class="">Doc</span></a></li>
-				<li><a href="#about">About</a></li>
-			</ul>
-
-		</div>
-	</div>
-</nav>
-<!--//NAVBAR  -->
-
 <div class="container-fluid">
-	
-	<div class="btn btn-primary err1">Toast</div>
-	
+
+	<!-- <div class="btn btn-primary err1">Toast</div> -->
+
+	<!--Draggable DIV:-->
+	<div id="mydiv">
+		<!--Include a header DIV with the same name as the draggable DIV, followed by "header":-->
+		<div id="mydivheader">Click here to move</div>
+		<p>Move</p>
+		<p>this</p>
+		<p>DIV</p>
+	</div>
+
 </div>
 
 <script>
-	$(function(){
-		$('.btn.err1').click(function(){
+	$(function () {
+		$('.btn.err1').click(function () {
 			toastr['error']('This is work!', 'error');
 		});
 	});
+
+	//Make the DIV element draggagle:
+	dragElement(document.getElementById(("mydiv")));
+
+	function dragElement(elmnt) {
+		var pos1 = 0,
+			pos2 = 0,
+			pos3 = 0,
+			pos4 = 0;
+		if (document.getElementById(elmnt.id + "header")) {
+			/* if present, the header is where you move the DIV from:*/
+			document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+		} else {
+			/* otherwise, move the DIV from anywhere inside the DIV:*/
+			elmnt.onmousedown = dragMouseDown;
+		}
+
+		function dragMouseDown(e) {
+			e = e || window.event;
+			// get the mouse cursor position at startup:
+			pos3 = e.clientX;
+			pos4 = e.clientY;
+			document.onmouseup = closeDragElement;
+			// call a function whenever the cursor moves:
+			document.onmousemove = elementDrag;
+		}
+
+		function elementDrag(e) {
+			e = e || window.event;
+			// calculate the new cursor position:
+			pos1 = pos3 - e.clientX;
+			pos2 = pos4 - e.clientY;
+			pos3 = e.clientX;
+			pos4 = e.clientY;
+			// set the element's new position:
+			elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+			elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+		}
+
+		function closeDragElement() {
+			/* stop moving when mouse button is released:*/
+			document.onmouseup = null;
+			document.onmousemove = null;
+		}
+	}
 </script>
+
+<style>
+	#mydiv {
+		position: absolute;
+		z-index: 9;
+		background-color: #f1f1f1;
+		border: 1px solid #d3d3d3;
+		text-align: center;
+	}
+
+	#mydivheader {
+		user-select: none;
+	}
+
+	#mydivheader {
+		padding: 10px;
+		cursor: move;
+		z-index: 10;
+		background-color: #2196F3;
+		color: #fff;
+	}
+</style>
