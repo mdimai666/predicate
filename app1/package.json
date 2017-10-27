@@ -1,6 +1,11 @@
 {
   "name": "app1",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "author": {
+    "name": "mdimai666",
+    "email": "mdimai666@mail.ru"
+  },
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -15,6 +20,24 @@
     "morgan": "~1.8.1",
     "mysql": "^2.14.1",
     "pug": "~2.0.0-beta11",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "moment": "latest", //nw
+    "handlebars": "^2.0.0" //nw
+  },
+  //nw
+  "main": "app.js",
+  "window": {
+    "title": "cmd",
+    "icon": "icon.png",
+    "toolbar": true,
+    "frame": true,
+    "transparent": false,
+    "width": 700,
+    "height": 400,
+    "position": "center",
+    "min_width": 400,
+    "min_height": 200,
+    "max_width": 800,
+    "max_height": 600
   }
 }

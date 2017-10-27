@@ -1,0 +1,70 @@
+doctype html
+html
+  head
+
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no")
+    link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+
+    //- // <!-- Chrome, Firefox OS and Opera -->
+    meta(name="theme-color" content="#1a1a1a")
+    //- // <!-- Windows Phone -->
+    meta(name="msapplication-navbutton-color" content="#1a1a1a")
+    //- // <!-- iOS Safari -->
+    meta(name="apple-mobile-web-app-status-bar-style" content="#1a1a1a")
+
+    meta(name="description" content="Predicate engine")
+    meta(name="author" content="author")
+    meta(name="keywords" content="AMAI,Predicate")
+    meta(name="Resource-type" content="Document")
+    meta(http-equiv="Cache-Control" content="no-cache")
+    meta(name="robots" content="all")
+    
+    title= title || 'Predicate'
+
+    //- jquery, bootstrap, font awesome
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet")
+    
+    
+    //- ext plugins  scripts
+
+    script(src="/scripts/toastr.min.js")
+    link(rel="stylesheet", href="/styles/toastr.min.css")
+    
+    //- my styles
+    link(rel='stylesheet', href='/styles/style1.css')
+
+    script.
+      var corep = {
+        js_show_errors: true,
+      }
+
+    script(src="/scripts/core.js")
+    script(src="/scripts/script1.js")
+
+
+    //- link(href="/styles/bootstrap.min.css" rel="stylesheet")
+    //- //link(href="/styles/font-awesome.min.css" rel="stylesheet")
+    
+    //- link(href="/styles/style1.css?update=12072017" rel="stylesheet")
+    //- //link(rel="stylesheet" href="/styles/bootstrap-slider.min.css")
+
+    //- //<!--scripts-->
+    //- script(src="/scripts/jquery.min.js")
+    //- script(src="/scripts/bootstrap.min.js")
+    //- script(src="/scripts/bootstrap-slider.min.js")
+    //- script(src="/scripts/scripts.js?update=12072017")
+
+    //- script(src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.7.18/go.js")
+
+  body
+    -var data = data2;//JSON.stringify(data1);
+    -if(typeof data === 'undefined') data='{}';
+    script.
+      var data = !{data}
+      
+    block content

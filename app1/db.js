@@ -25,16 +25,18 @@ con.connect(function (err) {
 //   });
 // };
 
-var users = function (callback,res, req) {
+var users = function (callback, res, req) {
 
 
   var sql = "SELECT * FROM users";
 
   var e = con.query(sql, function (err, result, fields) {
     if (err) throw err;
-    
+
     // console.log(result);
-    var ress = {'dima': 'makarov'};
+    var ress = {
+      'dima': 'makarov'
+    };
     callback(err, ress, {}, res, req);
   });
 

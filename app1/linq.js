@@ -5,8 +5,6 @@ var ef = require('../linq');
 
 
 
-
-
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
@@ -16,7 +14,7 @@ var con = mysql.createConnection({
   database: "predicate"
 });
 
-con.connect(function(err) {
+con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 

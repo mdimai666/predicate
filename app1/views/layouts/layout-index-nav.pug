@@ -21,7 +21,7 @@ html
     meta(http-equiv="Cache-Control" content="no-cache")
     meta(name="robots" content="all")
     
-    title= title
+    title= title || 'Predicate'
 
     //- jquery, bootstrap, font awesome
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
@@ -66,5 +66,6 @@ html
     -if(typeof data === 'undefined') data='{}';
     script.
       var data = !{data}
-      
+    
+    include ../blocks/nav.pug
     block content

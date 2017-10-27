@@ -10,12 +10,15 @@ var cfg_db = require('./app_cfg.json').cfg_db;
 
 
 //
-var db = require('./db');
+// var db = require('./db');
 
 // var index = require('./routes/index');
 // var users = require('./routes/users');
 
 var app = express();
+
+var core = require('./core0');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,49 +42,68 @@ app.use(express.static('public'));
 
 var mysql = require('mysql');
 
+
 app.use(function (req, res) {
 
+  core.init(req, res);
   //get data
-  function step1(next, buf){
+  function step1(next, buf) {
     var conn = mysql.createConnection(cfg_db);
-    
-      conn.connect();
-    
-      conn.query('select * from users', function(error, results){
-        if ( error ){
-            res.status(400).send('Error in database operation');
-        } else {
-            // res.send(results);
-            var db1 = results;
-            var data1 = {u: db1};
-            var data2 = stringify(db1, null, 2)
-            // res.render('index', { title: req.path, data1: data1, data2: data2 });
 
-            buf.data1 = data1;
-            buf.data2 = data2;
+    conn.connect(function (err) {
+      if (err) {
+        console.log('MySQL connect error');
+        throw err;
+      }
+      console.log("Connected!");
+    });
 
-            return next(step3, buf);
-        }
-      });
+    conn.query('select * from users', function (error, results) {
+      if (error) {
+        res.status(400).send('Error in database operation');
+      } else {
+        // res.send(results);
+        var db1 = results;
+        var data1 = {
+          u: db1
+        };
+        var data2 = stringify(db1, null, 2);
+        // res.render('index', { title: req.path, data1: data1, data2: data2 });
+
+        buf.data1 = data1;
+        buf.data2 = data2;
+
+        return next(step3, buf);
+      }
+    });
 
     // return next();
-  };
+  }
 
   //do operations
-  function step2(next,buf){
+  function step2(next, buf) {
     //so something
     return next(null, buf);
-  };
+  }
 
-  function step3(next, buf){
+  function step3(next, buf) {
+
+    // var r = req.path;
+    var _page = core.uri(0) || 'index';
+
     // res.send('Yummi!');
-    res.render('index', { title: 'Predicate', data1: buf.data1, data2: buf.data2 });
-  };
+    res.render(_page, {
+      // title: 'Predicate',
+      title: _page,
+      data1: buf.data1,
+      data2: buf.data2
+    });
+  }
 
   var buf = {
     req: req,
     res: res,
-  }
+  };
 
   step1(step2, buf);
 
@@ -95,7 +117,7 @@ app.use(function (req, res) {
   // // }
 
   // function step1(req, res, next){
-    
+
   //   // db.connect();
   //   // db.users(function (err, result, next2, res, req) {
   //   //   var db1 = result;
@@ -162,3 +184,5 @@ app.use(function (err, req, res, next) {
 // };
 
 module.exports = app;
+
+console.log('app1 start!');

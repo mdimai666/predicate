@@ -1,0 +1,25 @@
+{
+    "pages": {
+        "index": {
+            "title": "index",
+            "extend": null,
+            "template": null,
+
+            "blocks": [{
+                "name": "block1",
+                "type": "offer-big",
+                "data": {
+                    "text": " header text",
+                    "subtext": "this is sub text",
+                    "button": "button"
+                }
+
+            }]
+
+        }
+    },
+
+    "pages2": {
+        "item": "page-block-offer[big]=header text; sub text; .button-primary"
+    }
+}
