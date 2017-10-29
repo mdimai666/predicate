@@ -12,19 +12,19 @@
   },
   "dependencies": {
     "body-parser": "~1.17.1",
+    "child_process": "^1.0.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "handlebars": "^2.0.0",
     "json-stringify-safe": "^5.0.1",
     "linq": "^3.0.9",
+    "moment": "latest",
     "morgan": "~1.8.1",
     "mysql": "^2.14.1",
     "pug": "~2.0.0-beta11",
-    "serve-favicon": "~2.4.2",
-    "moment": "latest", //nw
-    "handlebars": "^2.0.0" //nw
+    "serve-favicon": "~2.4.2"
   },
-  //nw
   "main": "app.js",
   "window": {
     "title": "cmd",

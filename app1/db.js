@@ -50,7 +50,31 @@ var users = function (callback, res, req) {
   // res = JSON.stringify(res);
   // console.log(res);
   // return res;
-}
+};
+
+var table = function(callback, res, req) {
+
+    var sql = "SELECT * FROM users";
+    var e = con.query(sql, function (error, results) {
+      // if (error) {
+      //   res.status(400).send('Error in database operation');
+      // } else {
+      //   // res.send(results);
+      //   var db1 = results;
+      //   var data1 = {
+      //     u: db1
+      //   };
+      //   var data2 = stringify(db1, null, 2);
+      //   // res.render('index', { title: req.path, data1: data1, data2: data2 });
+
+      //   buf.data1 = data1;
+      //   buf.data2 = data2;
+
+      //   return next(step3, buf);
+      // }
+
+    });
+};
 
 /////////////////////////////////////////
 // EXPORT
@@ -58,4 +82,5 @@ var users = function (callback, res, req) {
 module.exports = {
   connect: function () {},
   users: users,
-}
+  table: table,
+};

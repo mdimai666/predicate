@@ -58,6 +58,8 @@ app.use(function (req, res) {
       console.log("Connected!");
     });
 
+    core.db = conn;
+
     conn.query('select * from users', function (error, results) {
       if (error) {
         res.status(400).send('Error in database operation');
@@ -90,6 +92,19 @@ app.use(function (req, res) {
 
     // var r = req.path;
     var _page = core.uri(0) || 'index';
+
+    if(_page ==='api'){
+      try{
+        res.json(require('./api')(core));
+      } catch(ex){
+        var a = {
+          result:'error api',
+          ex: core.errorToString(ex)
+        };
+        res.json(a);
+      }
+      return;
+    } 
 
     // res.send('Yummi!');
     res.render(_page, {

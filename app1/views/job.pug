@@ -7,21 +7,19 @@ block content
     
     //- img(src="/img.jpg", alt="")
 
-    .alert.alert-info dima
+    //- .alert.alert-info dima
     script.
       console.log(data);
 
+    .row
+      .col-xs-12
+        -var e = {name: 'dima', body: 'text', footer: 'link'}
+        +item(e)
+
 
 //- mixins
-mixin list
-  ul 
-    each v in ['one', 'two', 'three']
-      li=v
-
-
-  //- table   
-
+mixin item(e)
   .panel.panel-default
-    .panel-heading Head
-    .panel-body Body
-    .panel-footer Footer
+    .panel-heading #{e.name}
+    .panel-body #{e.body}
+    .panel-footer=e.footer
