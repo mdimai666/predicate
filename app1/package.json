@@ -16,7 +16,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
-    "handlebars": ">=2.0.0",
+    "handlebars": ">=4.0.0",
     "json-stringify-safe": "^5.0.1",
     "linq": "^3.0.9",
     "moment": "latest",
